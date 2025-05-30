@@ -35,45 +35,7 @@ public class velha {
                     System.out.println("Lugar inválido");
                 }
             }
-            int cont1 = 0;
-            int cont2 = 0;
-            int cont3 = 0;
-            int cont4 = 0;
-            int cont5 = 0;
-            int cont6 = 0;
-            int cont7 = 0;
-            int cont8 = 0;
-
-            for (int i = 0; i < velha.length; i++) {
-                for (int j = 0; j < velha.length; j++) {
-                    if (i == j && velha[i][j].equals("X")) {
-                        cont1++;
-                    }
-                    if (i == 0 && velha[i][j].equals("X")) {
-                        cont2++;
-                    }
-                    if (j == 0 && velha[i][j].equals("X")) {
-                        cont3++;
-                    }
-                    if (i + j == 2 && velha[i][j].equals("X")) {
-                        cont4++;
-                    }
-                    if (j == 1 && velha[i][j].equals("X")) {
-                        cont5++;
-                    }
-                    if (i == 1 && velha[i][j].equals("X")) {
-                        cont6++;
-                    }
-                    if (j == 2 && velha[i][j].equals("X")) {
-                        cont7++;
-                    }
-                    if (i == 2 && velha[i][j].equals("X")) {
-                        cont8++;
-                    }
-
-                }
-            }
-            if (cont1 == 3 || cont2 == 3 || cont3 == 3 || cont4 == 3 || cont5 == 3 || cont6 == 3 || cont7 == 3 || cont8 == 3) {
+            if (contagem("X", velha)) {
                 printVelha(velha);
                 System.out.println("PARABÉNS!!!");
                 break;
@@ -105,44 +67,7 @@ public class velha {
                 }
             }
 
-            cont1 = 0;
-            cont2 = 0;
-            cont3 = 0;
-            cont4 = 0;
-            cont5 = 0;
-            cont6 = 0;
-            cont7 = 0;
-            cont8 = 0;
-
-            for (int i = 0; i < velha.length; i++) {
-                for (int j = 0; j < velha.length; j++) {
-                    if (i == j && velha[i][j].equals("O")) {
-                        cont1++;
-                    }
-                    if (i == 0 && velha[i][j].equals("O")) {
-                        cont2++;
-                    }
-                    if (j == 0 && velha[i][j].equals("O")) {
-                        cont3++;
-                    }
-                    if (j + i == 2 && velha[i][j].equals("O")) {
-                        cont4++;
-                    }
-                    if (j == 1 && velha[i][j].equals("O")) {
-                        cont5++;
-                    }
-                    if (i == 1 && velha[i][j].equals("O")) {
-                        cont6++;
-                    }
-                    if (j == 2 && velha[i][j].equals("O")) {
-                        cont7++;
-                    }
-                    if (i == 2 && velha[i][j].equals("O")) {
-                        cont8++;
-                    }
-                }
-            }
-            if (cont1 == 3 || cont2 == 3 || cont3 == 3 || cont4 == 3 || cont5 == 3 || cont6 == 3 || cont7 == 3 || cont8 == 3) {
+            if (contagem("O", velha)) {
                 printVelha(velha);
                 System.out.println("PERDEU PRO BOT KKKKKKKK!!!");
                 break;
@@ -167,5 +92,48 @@ public class velha {
         System.out.println(" " + velha[0][0] + " | " + velha[0][1] + " | " + velha[0][2] + "\n---|---|---");
         System.out.println(" " + velha[1][0] + " | " + velha[1][1] + " | " + velha[1][2] + "\n---|---|---");
         System.out.println(" " + velha[2][0] + " | " + velha[2][1] + " | " + velha[2][2]);
+    }
+    public static boolean contagem(String string, String[][] velha){
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        int cont5 = 0;
+        int cont6 = 0;
+        int cont7 = 0;
+        int cont8 = 0;
+        for (int i = 0; i < velha.length; i++) {
+            for (int j = 0; j < velha.length; j++) {
+                if (i == j && velha[i][j].equals(string)) {
+                    cont1++;
+                }
+                if (i == 0 && velha[i][j].equals(string)) {
+                    cont2++;
+                }
+                if (j == 0 && velha[i][j].equals(string)) {
+                    cont3++;
+                }
+                if (j + i == 2 && velha[i][j].equals(string)) {
+                    cont4++;
+                }
+                if (j == 1 && velha[i][j].equals(string)) {
+                    cont5++;
+                }
+                if (i == 1 && velha[i][j].equals(string)) {
+                    cont6++;
+                }
+                if (j == 2 && velha[i][j].equals(string)) {
+                    cont7++;
+                }
+                if (i == 2 && velha[i][j].equals(string)) {
+                    cont8++;
+                }
+            }
+        }
+        if(cont1 == 3 || cont2 == 3 || cont3 == 3 || cont4 == 3 || cont5 == 3 || cont6 == 3 || cont7 == 3 || cont8 == 3){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

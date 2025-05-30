@@ -13,10 +13,8 @@ public class velha {
         System.out.println("oi");
         System.out.println("");
         while (true) {
-            System.out.println(velha[0][0] + "_|_" + velha[0][1] + "_|_" + velha[0][2]);
-            System.out.println(velha[1][0] + "_|_" + velha[1][1] + "_|_" + velha[1][2]);
-            System.out.println(velha[2][0] + " | " + velha[2][1] + " | " + velha[2][2]);
-            System.out.println("Escolha o lugar(de 1 à 9): ");
+            printVelha(velha);
+            System.out.print("Escolha o lugar(de 1 à 9): ");
             int y=0;
             while (y == 0) {
                 int lugar = scan.nextInt();
@@ -51,7 +49,6 @@ public class velha {
                     if (i == j && velha[i][j].equals("X")) {
                         cont1++;
                     }
-
                     if (i == 0 && velha[i][j].equals("X")) {
                         cont2++;
                     }
@@ -77,9 +74,7 @@ public class velha {
                 }
             }
             if (cont1 == 3 || cont2 == 3 || cont3 == 3 || cont4 == 3 || cont5 == 3 || cont6 == 3 || cont7 == 3 || cont8 == 3) {
-                System.out.println(velha[0][0] + "_|_" + velha[0][1] + "_|_" + velha[0][2]);
-                System.out.println(velha[1][0] + "_|_" + velha[1][1] + "_|_" + velha[1][2]);
-                System.out.println(velha[2][0] + " | " + velha[2][1] + " | " + velha[2][2]);
+                printVelha(velha);
                 System.out.println("PARABÉNS!!!");
                 break;
             }
@@ -148,9 +143,7 @@ public class velha {
                 }
             }
             if (cont1 == 3 || cont2 == 3 || cont3 == 3 || cont4 == 3 || cont5 == 3 || cont6 == 3 || cont7 == 3 || cont8 == 3) {
-                System.out.println(velha[0][0] + "_|_" + velha[0][1] + "_|_" + velha[0][2]);
-                System.out.println(velha[1][0] + "_|_" + velha[1][1] + "_|_" + velha[1][2]);
-                System.out.println(velha[2][0] + " | " + velha[2][1] + " | " + velha[2][2]);
+                printVelha(velha);
                 System.out.println("PERDEU PRO BOT KKKKKKKK!!!");
                 break;
             }
@@ -164,12 +157,15 @@ public class velha {
             }
 
             if(cont9 == 0){
-                System.out.println(velha[0][0] + "_|_" + velha[0][1] + "_|_" + velha[0][2]);
-                System.out.println(velha[1][0] + "_|_" + velha[1][1] + "_|_" + velha[1][2]);
-                System.out.println(velha[2][0] + " | " + velha[2][1] + " | " + velha[2][2]);
+                printVelha(velha);
                 System.out.println("VELHA!!!!");
                 break;
             }
         }
+    }
+    public static void printVelha(String[][] velha){
+        System.out.println(" " + velha[0][0] + " | " + velha[0][1] + " | " + velha[0][2] + "\n---|---|---");
+        System.out.println(" " + velha[1][0] + " | " + velha[1][1] + " | " + velha[1][2] + "\n---|---|---");
+        System.out.println(" " + velha[2][0] + " | " + velha[2][1] + " | " + velha[2][2]);
     }
 }

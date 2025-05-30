@@ -44,7 +44,9 @@ public class velha {
             cont10++;
 
             while (true) {
-                if (contagem("X", velha, true)) {
+                if (contagem("O", velha, true)) {
+                    break;
+                }else if (contagem("X", velha, true)) {
                     break;
                 } else {
                     int botLugar = (int)(Math.random() * 10);

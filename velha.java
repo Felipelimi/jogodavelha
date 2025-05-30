@@ -35,7 +35,8 @@ public class velha {
                     System.out.println("Lugar inválido");
                 }
             }
-            if (contagem("X", velha)) {
+
+            if (contagem("X", velha, false)) {
                 printVelha(velha);
                 System.out.println("PARABÉNS!!!");
                 break;
@@ -43,35 +44,40 @@ public class velha {
             cont10++;
 
             while (true) {
-                int botLugar = (int)(Math.random() * 10);
-                if (botLugar != 10 && botLugar != 0) {
-                    if (botLugar <= 3) {
-                        if (velha[0][botLugar - 1].equals(" ")) {
-                            velha[0][botLugar - 1] = "O";
-                            break;
-                        }
-                    } else if (botLugar <= 6) {
-                        if (velha[1][botLugar - 4].equals(" ")) {
-                            velha[1][botLugar - 4] = "O";
-                            break;
-                        }
-                    } else if (botLugar <= 9) {
-                        if (velha[2][botLugar - 7].equals(" ")) {
-                            velha[2][botLugar - 7] = "O";
-                            break;
+                if (contagem("X", velha, true)) {
+                    break;
+                } else {
+                    int botLugar = (int)(Math.random() * 10);
+                    if (botLugar != 10 && botLugar != 0) {
+                        if (botLugar <= 3) {
+                            if (velha[0][botLugar - 1].equals(" ")) {
+                                velha[0][botLugar - 1] = "O";
+                                break;
+                            }
+                        } else if (botLugar <= 6) {
+                            if (velha[1][botLugar - 4].equals(" ")) {
+                                velha[1][botLugar - 4] = "O";
+                                break;
+                            }
+                        } else if (botLugar <= 9) {
+                            if (velha[2][botLugar - 7].equals(" ")) {
+                                velha[2][botLugar - 7] = "O";
+                                break;
+                            }
                         }
                     }
-                }
-                if (cont10 == 5) {
-                    break;
+                    if (cont10 == 5) {
+                        break;
+                    }
                 }
             }
 
-            if (contagem("O", velha)) {
+            if (contagem("O", velha, false)) {
                 printVelha(velha);
                 System.out.println("PERDEU PRO BOT KKKKKKKK!!!");
                 break;
             }
+
             int cont9 = 0;
             for (int i = 0; i < velha.length; i++) {
                 for (int j = 0; j < velha.length; j++) {
@@ -93,7 +99,7 @@ public class velha {
         System.out.println(" " + velha[1][0] + " | " + velha[1][1] + " | " + velha[1][2] + "\n---|---|---");
         System.out.println(" " + velha[2][0] + " | " + velha[2][1] + " | " + velha[2][2]);
     }
-    public static boolean contagem(String string, String[][] velha){
+    public static boolean contagem(String string, String[][] velha, boolean impedimento){
         int cont1 = 0;
         int cont2 = 0;
         int cont3 = 0;
@@ -130,10 +136,44 @@ public class velha {
                 }
             }
         }
+
+        if(impedimento){
+            for (int i = 0; i < velha.length; i++) {
+                for (int j = 0; j < velha.length; j++) {
+                    if (i == j && velha[i][j].equals(" ") && cont1 == 2) {
+                        velha[i][j] = "O";
+                        return true;
+                    } else if (i == 0 && velha[i][j].equals(" ") && cont2 == 2) {
+                        velha[i][j] = "O";
+                        return true;
+                    } else if (j == 0 && velha[i][j].equals(" ") && cont3 == 2) {
+                        velha[i][j] = "O";
+                        return true;
+                    } else if (i + j == 2 && velha[i][j].equals(" ") && cont4 == 2) {
+                        velha[i][j] = "O";
+                        return true;
+                    } else if (j == 1 && velha[i][j].equals(" ") && cont5 == 2) {
+                        velha[i][j] = "O";
+                        return true;
+                    } else if (i == 1 && velha[i][j].equals(" ") && cont6 == 2) {
+                        velha[i][j] = "O";
+                        return true;
+                    } else if (j == 2 && velha[i][j].equals(" ") && cont7 == 2) {
+                        velha[i][j] = "O";
+                        return true;
+                    } else if (i == 2 && velha[i][j].equals(" ") && cont8 == 2) {
+                        velha[i][j] = "O";
+                        return true;
+                    }
+                }
+            }
+        }
+
         if(cont1 == 3 || cont2 == 3 || cont3 == 3 || cont4 == 3 || cont5 == 3 || cont6 == 3 || cont7 == 3 || cont8 == 3){
             return true;
         } else {
             return false;
         }
     }
+    
 }
